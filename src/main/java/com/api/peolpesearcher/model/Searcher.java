@@ -1,32 +1,17 @@
 package com.api.peolpesearcher.model;
 
-import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
+import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
-@Data
-@AllArgsConstructor
+
 @Entity
-public class Searcher  {
+public class Searcher implements Serializable {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false) {
     private Long id;
-    @NotBlank(message = "Name is required")
     private String name;
-    @NotBlank(message = "Password is required")
-    private String password;
-    @Email
-    @NotEmpty(message = "Email is required")
-    private String email;
     private String gender;
     private String phone;
     private String imageURL;
